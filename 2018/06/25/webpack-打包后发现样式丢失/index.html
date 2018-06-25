@@ -23,7 +23,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="NN~ Blog"/>
+        <meta property="og:title" content="webpack 打包后发现样式丢失"/>
     
 
     <!--Open Graph Description-->
@@ -36,7 +36,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website"/>
+        <meta property="og:type" content="article"/>
     
 
     <!--Page Cover-->
@@ -55,7 +55,7 @@
 
     <!-- Title -->
     
-    <title>Archives - NN~ Blog</title>
+    <title>webpack 打包后发现样式丢失 - NN~ Blog</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -141,62 +141,69 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-<!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
 <header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>Archives</h1>
+                <div class="post-heading">
+                    <h1>webpack 打包后发现样式丢失</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-06-25
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+
+            <!-- Gallery -->
             
-                <div class="post-preview">
-    <a href="/2018/06/25/webpack-打包后发现样式丢失/">
-        <h1 class="post-title archive">
-            webpack 打包后发现样式丢失
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-06-25
-    </p>
-</div>
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>最近的工作是利用Vuejs开发一个微信公众号的项目，所以边做边思考，在这里做一下记录。<br>记录一下对最近正在做的Vuejs框架实践过程中踩的坑和学习到的东西。</p>
+<p>用webpack 样式分离打包时发现，.css中发现-webkit-box-orient不见了。（打包剔除了）</p>
+<h3 id="autoprefixer"><a href="#autoprefixer" class="headerlink" title="autoprefixer"></a>autoprefixer</h3><p>autoprefixer不仅会帮你加-webkit-之类的prefixer， 它还会帮你删除你自己写在 css/sass/less里的样式， 真是厉害了</p>
+<p>关闭autoprefixer的自动删除功能，这样：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/* autoprefixer: off */</span><br><span class="line">-webkit-box-orient: vertical;</span><br><span class="line">/* autoprefixer: on */</span><br></pre></td></tr></table></figure>
+<p>用注释包裹的中间这一句就不会被删除</p>
+<h3 id="再深究一下"><a href="#再深究一下" class="headerlink" title="再深究一下"></a>再深究一下</h3><p>注： autoprefixer会帮你删除老式过时的代码，也会帮你增加新前缀</p>
+<p>你可以增加 remove: false 这个配置项，就不会开启自动移除功能</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">postcss([ autoprefixer(&#123; remove: <span class="literal">false</span> &#125;) ]);</span><br></pre></td></tr></table></figure>
+<p>不仅如此，你还可以只让它移除老前缀，不自动增加新前缀</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">postcss([ autoprefixer(&#123; add: <span class="literal">false</span>, browsers: [] &#125;)]);</span><br></pre></td></tr></table></figure>
+
+
+                
+            </div>
+
+            <!-- Comments -->
             
-                <div class="post-preview">
-    <a href="/2018/06/22/hello-world/">
-        <h1 class="post-title archive">
-            Hello World
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-06-22
-    </p>
-</div>
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
             
-            <div class="archive-before-pagination"></div>
-            <ul class="pager">
-    
-    
-</ul>
         </div>
     </div>
-</div>
-
+</article>
 
     <!-- Footer -->
     <hr />
